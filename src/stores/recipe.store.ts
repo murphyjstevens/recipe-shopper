@@ -7,7 +7,11 @@ export const useRecipeStore = defineStore('recipe', () => {
 
   function fetch() {
     const allStored = localStorage.getItem('recipes')
-    all.value = JSON.parse(allStored) as Array<Recipe>
+    if (allStored) {
+      all.value = JSON.parse(allStored) as Array<Recipe>
+    } else {
+      all.value = []
+    }
   }
 
   function save(recipe: Recipe) {

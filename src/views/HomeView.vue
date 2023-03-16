@@ -13,29 +13,34 @@ recipeStore.fetch()
 </script>
 
 <template>
-  <header class="h-12 px-4 bg-gray-900 flex flex-row justify-between">
-    <div class="w-14"></div>
+  <div class="w-full h-full bg-gray-800">
+    <header class="navbar bg-gray-900">
+      <div class="navbar-start">
+      </div>
 
-    <h2 class="flex text-2xl my-2">Recipes</h2>
+      <div class="navbar-center">
+        <h2 class="flex text-2xl">Recipes</h2>
+      </div>
 
-    <div class="w-14 flex justify-end items-center">
-      <router-link
-        class="h-7 w-7 bg-transparent flex flex-row items-center justify-center rounded-full transition ease-in-out hover:bg-gray-800 active:bg-gray-700"
-        to="/new"
-      >
-        <i class="bi bi-plus-lg text-xl"></i>
-      </router-link>
+      <div class="navbar-end">
+        <router-link
+          to="/new"
+          class="btn btn-ghost btn-circle"
+        >
+          <i class="bi bi-plus-lg text-xl"></i>
+        </router-link>
+      </div>
+    </header>
+
+    <div v-if="!recipes?.length" class="flex flex-col items-center justify-center">
+      <div class="flex flex-row justify-end">
+        
+      </div>
+      <h2 class="flex text-xl my-2">You have no recipes!</h2>
     </div>
-  </header>
 
-  <div v-if="!recipes?.length" class="flex flex-col items-center justify-center">
-    <div class="flex flex-row justify-end">
-      
+    <div v-for="recipe in recipes" v-bind:key="recipe.id">
+
     </div>
-    <h2 class="flex text-xl my-2">You have no recipes!</h2>
-  </div>
-
-  <div v-for="recipe in recipes" v-bind:key="recipe.id">
-
   </div>
 </template>
